@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pantalla vs. papel | Blog Educativo</title>
+    <title>Pantalla vs. papel | Blog Educativo UNIMINUTO</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -25,104 +30,191 @@
             text-indent: -2em;
             margin-bottom: 1em;
         }
+        /* Estilo para destacar conectores argumentativos */
+        .conector {
+            font-weight: 700;
+            color: #1d4ed8;
+            background-color: #eff6ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        /* Animación Modal */
+        .fade-in {
+            animation: fadeIn 0.25s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body id="inicio" class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-10">
+    <!-- Header / Menú de Navegación -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex-shrink-0 flex items-center gap-2">
+            <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-xl">
                     P
                 </div>
                 <h1 class="font-bold text-2xl tracking-tight text-gray-900">Pantalla <span class="text-blue-600 font-light">vs.</span> papel</h1>
             </div>
+
+            <!-- Navegación Escritorio -->
             <nav class="hidden md:flex space-x-8">
-                <a href="#" class="text-blue-600 font-medium hover:text-blue-800 transition-colors">Inicio</a>
-                <a href="#" class="text-gray-500 font-medium hover:text-gray-900 transition-colors">Narrativas Digitales</a>
-                <a href="#" class="text-gray-500 font-medium hover:text-gray-900 transition-colors">Educación</a>
-                <a href="#" class="text-gray-500 font-medium hover:text-gray-900 transition-colors">Acerca de</a>
+                <a href="#inicio" class="text-blue-600 font-medium hover:text-blue-800 transition-colors">Inicio</a>
+                <a href="#entrada" class="text-gray-600 font-medium hover:text-blue-600 transition-colors">Narrativa Digital</a>
+                <a href="#multimedia" class="text-gray-600 font-medium hover:text-blue-600 transition-colors">Multimedia</a>
+                <a href="#reflexion" class="text-gray-600 font-medium hover:text-blue-600 transition-colors">Reflexión</a>
+                <a href="#referencias" class="text-gray-600 font-medium hover:text-blue-600 transition-colors">Referencias APA</a>
             </nav>
+
+            <!-- Botón de menú móvil -->
             <div class="md:hidden flex items-center">
-                <!-- Botón de menú móvil simulado -->
-                <button class="text-gray-500 hover:text-gray-900">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
+                <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2">
+                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-2">
+            <a href="#inicio" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-3 py-2 rounded-md font-medium mobile-nav-link">Inicio</a>
+            <a href="#entrada" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-3 py-2 rounded-md font-medium mobile-nav-link">Narrativa Digital</a>
+            <a href="#multimedia" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-3 py-2 rounded-md font-medium mobile-nav-link">Multimedia</a>
+            <a href="#reflexion" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-3 py-2 rounded-md font-medium mobile-nav-link">Reflexión</a>
+            <a href="#referencias" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-3 py-2 rounded-md font-medium mobile-nav-link">Referencias APA</a>
+        </div>
     </header>
 
+    <!-- Contenido Principal -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div class="flex flex-col lg:flex-row gap-10">
             
-            <!-- Contenido Principal -->
+            <!-- Entrada Principal -->
             <main class="w-full lg:w-2/3">
-                <article class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <article id="entrada" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden scroll-mt-20">
                     
-                    <!-- Imagen destacada -->
-                    <img src="https://placehold.co/1200x600/1e3a8a/ffffff?text=El+Futuro+de+la+Lectura" alt="Concepto de lectura digital" class="w-full h-auto object-cover max-h-[400px]">
+                    <!-- Imagen destacada principal -->
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Concepto de lectura digital" class="w-full h-auto object-cover max-h-[400px]">
                     
                     <div class="p-6 md:p-10 lg:p-12">
-                        <div class="flex items-center gap-4 text-sm text-gray-500 mb-6">
+                        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
                             <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">Tecnología y Educación</span>
-                            <time datetime="2023-10-25">25 de Octubre, 2023</time>
-                            <span>• 5 min de lectura</span>
+                            <time datetime="2026-10-05"><i class="fa-regular fa-calendar"></i> Semana 6</time>
+                            <span><i class="fa-solid fa-clock"></i> 5 min de lectura</span>
                         </div>
                         
                         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-serif leading-tight">
-                            Narrativa Digital frente a Narrativa Tradicional: Un debate sobre cómo consumimos historias
+                            Narrativa Digital frente a Narrativa Tradicional: Un debate sobre cómo consumimos e interpretamos historias
                         </h2>
                         
                         <div class="flex items-center gap-4 mb-8 pb-8 border-b border-gray-100">
-                            <img src="https://placehold.co/100x100/e2e8f0/475569?text=Autor" alt="Avatar del autor" class="w-12 h-12 rounded-full">
+                            <div class="w-12 h-12 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-lg">
+                                MD
+                            </div>
                             <div>
                                 <p class="font-medium text-gray-900">Equipo Estudiantil UNIMINUTO</p>
-                                <p class="text-sm text-gray-500">Investigadores en Comunicación Digital</p>
+                                <p class="text-sm text-gray-500">Curso: Lectura y Escritura en el Contexto Digital</p>
                             </div>
                         </div>
 
+                        <!-- Texto del Artículo -->
                         <div class="prose prose-lg max-w-none text-gray-700 font-serif leading-relaxed">
                             <p class="mb-6">
-                                La evolución tecnológica ha transformado radicalmente nuestras prácticas de lectura y escritura. La transición del papel a la pantalla no solo representa un cambio de soporte, sino una reestructuración profunda en la forma en que construimos, interpretamos y argumentamos las ideas. En este contexto, surge un debate ineludible: ¿qué formato nos ofrece una mejor experiencia y capacidad de argumentación?
+                                La evolución tecnológica ha transformado radicalmente nuestras prácticas de lectura y escritura. La transición del papel a la pantalla no solo representa un cambio de soporte, sino una reestructuración profunda en la forma en que construimos, interpretamos y argumentamos las ideas en la sociedad contemporánea.
                             </p>
 
                             <p class="mb-6">
-                                <strong>En primer lugar</strong>, es innegable que la narrativa digital ofrece ventajas sin precedentes gracias a su naturaleza hipertextual. A diferencia de un libro físico, los textos digitales permiten integrar múltiples lenguajes (texto, sonido, imagen, video y animación) en un solo espacio. <strong>Por consiguiente</strong>, el autor cuenta con herramientas dinámicas que pueden sustentar un argumento visualmente o mediante referencias cruzadas instantáneas. Un artículo digital puede enlazar directamente a las fuentes primarias, permitiendo al lector verificar los datos en tiempo real.
+                                <span class="conector">En primer lugar</span>, es innegable que la narrativa digital ofrece ventajas sin precedentes gracias a su naturaleza hipertextual y multimedial. A diferencia de un libro físico, los entornos digitales permiten integrar simultáneamente múltiples lenguajes (texto, sonido, imagen, video y animación). <span class="conector">Por consiguiente</span>, según lo expuesto por Karbaum Padilla (2021), el autor cuenta con herramientas dinámicas que le permiten sustentar sus premisas visualmente mediante evidencias inmediatas y referencias cruzadas instantáneas a fuentes primarias.
                             </p>
 
+                            <!-- Recurso Multimedia 1 (Infografía / Imagen destacada interna) -->
                             <figure class="my-8">
-                                <img src="https://placehold.co/800x450/0f172a/64748b?text=Hipertextualidad+y+Multimedia" alt="Diagrama de red hipertextual" class="w-full rounded-lg shadow-md">
-                                <figcaption class="text-center text-sm text-gray-500 mt-3 italic">La narrativa transmedia exige un lector activo que construya su propio recorrido.</figcaption>
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Diagrama de red hipertextual" class="w-full rounded-lg shadow-md">
+                                <figcaption class="text-center text-sm text-gray-500 mt-3 italic font-sans">
+                                    Figura 1. La lectura hipertextual e interactiva exige un usuario activo dentro de la cultura transmedia.
+                                </figcaption>
                             </figure>
 
                             <p class="mb-6">
-                                <strong>Sin embargo</strong>, esta riqueza de recursos también conlleva desafíos significativos. La sobreabundancia de estímulos visuales, hipervínculos y notificaciones en las pantallas a menudo fragmenta la atención del usuario. <strong>En consecuencia</strong>, la lectura en entornos digitales tiende a ser más superficial, en forma de escaneo visual (lectura en "F"), lo que dificulta la retención de argumentos filosóficos o teóricos de gran extensión y complejidad.
+                                <span class="conector">Sin embargo</span>, esta abundancia de recursos también conlleva desafíos cognitivos significativos. La sobreabundancia de estímulos visuales, hipervínculos y notificaciones en las pantallas a menudo fragmenta la atención del usuario. <span class="conector">En consecuencia</span>, la lectura en entornos digitales tiende a ser más veloz y superficial (escaneo visual), lo que dificulta la asimilación profunda de argumentos teóricos o filosóficos de gran extensión.
                             </p>
 
                             <p class="mb-6">
-                                <strong>Por el contrario</strong>, la narrativa tradicional en papel sigue siendo insuperable cuando se trata de la concentración y el pensamiento crítico profundo. El libro impreso impone un ritmo de lectura lineal y pausado, libre de ventanas emergentes y algoritmos que compiten por la atención. El soporte físico brinda un "mapa mental" espacial del texto, lo que ayuda a la memoria y a la asimilación a largo plazo. <strong>No obstante</strong>, su principal limitación es su naturaleza estática; no permite la actualización inmediata ni la interactividad con otros usuarios.
+                                <span class="conector">Por el contrario</span>, la narrativa tradicional en papel sigue siendo insuperable en cuanto a la concentración sostenida y el pensamiento crítico profundo. El soporte físico impone un ritmo de lectura lineal y pausado, libre de algoritmos o ventanas emergentes que compitan por la atención. Paredes Otero (2022) subraya que, aunque la sociedad transmedia empodera al usuario interactivo, <span class="conector">no obstante</span>, el libro impreso otorga un mapa mental espacial indispensable para la retención a largo plazo.
                             </p>
 
-                            <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 font-sans">Conclusión: Complementariedad, no sustitución</h3>
+                            <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 font-sans">Conclusión: Complementariedad en el entorno digital</h3>
                             
                             <p class="mb-8">
-                                <strong>En conclusión</strong>, determinar qué formato "argumenta mejor" depende del objetivo comunicativo. La narrativa digital es inmensamente superior para argumentaciones empíricas, periodísticas o informativas, donde la evidencia visual, la conexión de datos y la inmediatez son cruciales. Por otro lado, la narrativa tradicional prevalece en la construcción de argumentos que requieren introspección y un análisis sostenido. <strong>Por lo tanto</strong>, en la sociedad transmedia contemporánea, el desafío no es elegir uno sobre el otro, sino dominar ambos lenguajes para aprovechar sus respectivas fortalezas.
+                                <span class="conector">En conclusión</span>, determinar qué formato "argumenta mejor" depende directamente del propósito comunicativo del discurso. La narrativa digital es inmensamente superior para argumentaciones empíricas, informativas e interactivas que requieren comprobación en tiempo real. Por otro lado, la narrativa tradicional prevalece en la construcción de pensamientos filosóficos y complejos. <span class="conector">Por lo tanto</span>, el verdadero desafío académico reside en dominar ambos lenguajes para aprovechar sus respectivas fortalezas.
                             </p>
                         </div>
 
-                        <div class="mt-12 pt-8 border-t border-gray-200">
+                        <!-- Sección de Recursos Multimedia Integrados (Video) -->
+                        <div id="multimedia" class="mt-12 pt-8 border-t border-gray-200 scroll-mt-20">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4 font-sans flex items-center gap-2">
+                                <i class="fa-solid fa-photo-film text-blue-600"></i> Recursos Multimedia Integrados
+                            </h3>
+                            <p class="text-sm text-gray-600 mb-4 font-sans">
+                                Video complementario sobre la evolución de la lectura analógica hacia el entorno hipertextual y transmedia:
+                            </p>
+                            <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-md">
+                                <iframe class="w-full h-64 md:h-80 rounded-lg" src="https://www.youtube.com/embed/OqVnLttb-H8" title="Narrativas Transmedia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Sección de Reflexión Orientadora (Acordeón) -->
+                        <div id="reflexion" class="mt-12 pt-8 border-t border-gray-200 scroll-mt-20">
+                            <h3 class="text-xl font-bold text-gray-900 mb-6 font-sans flex items-center gap-2">
+                                <i class="fa-solid fa-brain text-blue-600"></i> Reflexión Orientadora Grupal
+                            </h3>
+                            
+                            <div class="space-y-4 font-sans">
+                                <!-- Pregunta 1 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <button class="accordion-btn w-full bg-gray-50 hover:bg-blue-50 px-5 py-4 text-left font-semibold text-gray-900 flex justify-between items-center transition-colors">
+                                        <span>¿Qué diferencias encuentra entre una narrativa digital y una tradicional?</span>
+                                        <i class="fa-solid fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                                    </button>
+                                    <div class="accordion-content hidden p-5 bg-white border-t border-gray-100 text-gray-700 text-sm leading-relaxed space-y-2">
+                                        <p>La diferencia fundamental radica en tres elementos: <strong>linealidad, soporte e interactividad</strong>.</p>
+                                        <p>La narrativa tradicional es lineal, estática y guiada de principio a fin por el autor a través de texto e imagen fija en papel. Por su parte, la narrativa digital es hipertextual y multimedial; permite al usuario elegir su propia ruta de lectura mediante hipervínculos e interactuar activamente con audios, videos y animaciones.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Pregunta 2 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <button class="accordion-btn w-full bg-gray-50 hover:bg-blue-50 px-5 py-4 text-left font-semibold text-gray-900 flex justify-between items-center transition-colors">
+                                        <span>¿Cuál de los dos formatos logra argumentar mejor y por qué?</span>
+                                        <i class="fa-solid fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                                    </button>
+                                    <div class="accordion-content hidden p-5 bg-white border-t border-gray-100 text-gray-700 text-sm leading-relaxed space-y-2">
+                                        <p>No existe un formato intrínsecamente superior, sino adecuado al <strong>propósito comunicativo</strong>:</p>
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li><strong>Digital:</strong> Argumenta mejor de forma empírica y visual gracias a la capacidad de incluir videos, datos interactivos y enlaces directos a las fuentes primarias para validación inmediata.</li>
+                                            <li><strong>Tradicional (Papel):</strong> Argumenta mejor en el plano teórico y filosófico largo, ya que está libre de distracciones y notificaciones, facilitando la concentración y la construcción de silogismos complejos.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Referencias Bibliográficas -->
+                        <div id="referencias" class="mt-12 pt-8 border-t border-gray-200 scroll-mt-20">
                             <h4 class="text-xl font-bold text-gray-900 mb-6 font-sans flex items-center gap-2">
-                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                Referencias Bibliográficas
+                                <i class="fa-solid fa-book text-blue-600"></i> Referencias Bibliográficas (Normas APA)
                             </h4>
-                            <div class="text-gray-700 text-sm space-y-4">
+                            <div class="text-gray-700 text-sm space-y-4 font-sans">
                                 <p class="apa-citation">
-                                    Karbaum Padilla, G. (2021). Una historia audiovisual. En <em>La evolución de la narrativa audiovisual: analógica, transmedia y social media</em>: (ed.) (pp. 18-60). Universidad Peruana de Ciencias Aplicadas (UPC).
+                                    Hernández Guerrero, M. J. (2022). The translation of multimedia news stories: Rewriting the digital narrative. <em>Journalism, 23</em>(7), 1488-1508.
                                 </p>
                                 <p class="apa-citation">
-                                    Paredes Otero, G. (Coord.). (2022). <em>Narrativas y usuarios de la sociedad transmedia</em>: (1 ed.) (pp. 239-262, 300-318 y 731-743). Dykinson.
+                                    Karbaum Padilla, G. (2021). Una historia audiovisual. En <em>La evolución de la narrativa audiovisual: analógica, transmedia y social media</em> (pp. 18-60). Universidad Peruana de Ciencias Aplicadas (UPC).
+                                </p>
+                                <p class="apa-citation">
+                                    Paredes Otero, G. (Coord.). (2022). <em>Narrativas y usuarios de la sociedad transmedia</em> (1a ed., pp. 239-262, 300-318 y 731-743). Dykinson.
                                 </p>
                             </div>
                         </div>
@@ -131,39 +223,48 @@
                 </article>
             </main>
 
+            <!-- Sidebar / Barra Lateral -->
             <aside class="w-full lg:w-1/3 space-y-8">
                 
                 <!-- Widget: Acerca de -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center">
-                    <img src="https://placehold.co/150x150/2563eb/ffffff?text=Blog+MD" alt="Logo del Blog" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-blue-50">
+                    <div class="w-20 h-20 bg-blue-600 text-white rounded-full mx-auto mb-4 border-4 border-blue-50 flex items-center justify-center text-2xl font-bold">
+                        MD
+                    </div>
                     <h3 class="font-bold text-lg text-gray-900 mb-2">Sobre este blog</h3>
                     <p class="text-gray-600 text-sm mb-4">
-                        Espacio colaborativo dedicado al análisis de las narrativas digitales, multimedia y su impacto en la educación y la sociedad transmedia contemporánea.
+                        Espacio académico colaborativo dedicado al análisis reflexivo de las narrativas digitales, recursos multimedia y la sociedad transmedia.
                     </p>
-                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                        Saber más
+                    <button id="btn-saber-mas" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors shadow-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-info"></i> Saber más
                     </button>
                 </div>
 
                 <!-- Widget: Entradas recientes -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                    <h3 class="font-bold text-lg text-gray-900 mb-4 pb-2 border-b border-gray-100">Entradas Recientes</h3>
+                    <h3 class="font-bold text-lg text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-blue-600"></i> Secciones del Blog
+                    </h3>
                     <ul class="space-y-4">
                         <li>
-                            <a href="#" class="group flex gap-3 items-start">
-                                <img src="https://placehold.co/80x80/f87171/ffffff?text=1" alt="Miniatura" class="w-16 h-16 rounded object-cover flex-shrink-0">
+                            <a href="#entrada" class="group flex gap-3 items-start">
+                                <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded flex-shrink-0 flex items-center justify-center font-bold">
+                                    01
+                                </div>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors line-clamp-2">El papel del lector en la era transmedia</h4>
-                                    <p class="text-xs text-gray-500 mt-1">20 Oct, 2023</p>
+                                    <h4 class="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">Entrada Principal</h4>
+                                    <p class="text-xs text-gray-500 mt-1">Análisis argumentativo completo</p>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="group flex gap-3 items-start">
-                                <img src="https://placehold.co/80x80/fbbf24/ffffff?text=2" alt="Miniatura" class="w-16 h-16 rounded object-cover flex-shrink-0">
+                            <a href="#reflexion" class="group flex gap-3 items-start">
+                                <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded flex-shrink-0 flex items-center justify-center font-bold">
+                                    02
+                                </div>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors line-clamp-2">Recursos multimedia para argumentar</h4>
-                                    <p class="text-xs text-gray-500 mt-1">15 Oct, 2023</p>
+                                    <h4 class="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">Reflexión Orientadora</h4>
+                                    <p class="text-xs text-gray-500 mt-1">Preguntas de discusión</p>
                                 </div>
                             </a>
                         </li>
@@ -172,13 +273,13 @@
 
                 <!-- Widget: Categorías -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                    <h3 class="font-bold text-lg text-gray-900 mb-4 pb-2 border-b border-gray-100">Categorías</h3>
+                    <h3 class="font-bold text-lg text-gray-900 mb-4 pb-2 border-b border-gray-100">Categorías Académicas</h3>
                     <div class="flex flex-wrap gap-2">
-                        <a href="#" class="inline-block px-3 py-1 bg-gray-100 hover:bg-blue-100 text-gray-700 hover:text-blue-700 rounded-full text-sm transition-colors">Narrativa Digital</a>
-                        <a href="#" class="inline-block px-3 py-1 bg-gray-100 hover:bg-blue-100 text-gray-700 hover:text-blue-700 rounded-full text-sm transition-colors">Educación</a>
-                        <a href="#" class="inline-block px-3 py-1 bg-gray-100 hover:bg-blue-100 text-gray-700 hover:text-blue-700 rounded-full text-sm transition-colors">Lectura</a>
-                        <a href="#" class="inline-block px-3 py-1 bg-gray-100 hover:bg-blue-100 text-gray-700 hover:text-blue-700 rounded-full text-sm transition-colors">Multimedia</a>
-                        <a href="#" class="inline-block px-3 py-1 bg-gray-100 hover:bg-blue-100 text-gray-700 hover:text-blue-700 rounded-full text-sm transition-colors">Transmedia</a>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Narrativa Digital</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Educación</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Lectura y Escritura</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Multimedia</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Transmedia</span>
                     </div>
                 </div>
 
@@ -187,25 +288,129 @@
         </div>
     </div>
 
+    <!-- Modal Interactivo "Saber Más" -->
+    <div id="modal-saber-mas" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 relative fade-in">
+            <button id="btn-cerrar-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-xl p-1">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full mx-auto flex items-center justify-center text-xl mb-2">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 font-sans">Información de la Actividad</h3>
+                <p class="text-xs text-blue-600 font-semibold uppercase tracking-wider mt-1">UNIMINUTO - Semana 6</p>
+            </div>
+
+            <div class="space-y-3 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                <p><strong>Asignatura:</strong> Lectura y Escritura en el Contexto Digital</p>
+                <p><strong>Actividad:</strong> Blog. Pantalla vs. papel</p>
+                <p><strong>Objetivo:</strong> Relacionar los componentes de los argumentos presentados en un texto de acuerdo con su función lógica y verificar su solidez y solidez multimedial.</p>
+                <div class="bg-blue-50 p-3 rounded-lg text-blue-900 text-xs leading-relaxed">
+                    <i class="fa-solid fa-quote-left mr-1 text-blue-400"></i>
+                    Investigación basada en textos de Karbaum Padilla (2021) y Paredes Otero (2022).
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <button id="btn-modal-ok" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition-colors">
+                    Entendido / Volver al Blog
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer / Pie de página -->
     <footer class="bg-white border-t border-gray-200 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="md:flex md:items-center md:justify-between text-center md:text-left">
                 <div class="mb-4 md:mb-0 text-gray-600 text-sm">
-                    &copy; 2023 Proyecto Académico - Lectura y Escritura en el Contexto Digital. 
+                    &copy; Corporación Universitaria Minuto de Dios - UNIMINUTO.
+                    <br><span class="text-xs text-gray-400">Actividad Evaluativa Semana 6</span>
                 </div>
                 <div class="flex justify-center md:justify-end space-x-6 text-gray-400">
-                    <a href="#" class="hover:text-blue-600">
-                        <span class="sr-only">Facebook</span>
-                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
-                    </a>
-                    <a href="#" class="hover:text-blue-400">
-                        <span class="sr-only">Twitter</span>
-                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+                    <a href="#inicio" class="hover:text-blue-600 text-xs flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-up"></i> Volver arriba
                     </a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Scripts JavaScript Integrados -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Lógica del Menú Móvil
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                } else {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-xmark');
+                }
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+
+            // 2. Lógica del Modal "Saber Más"
+            const btnSaberMas = document.getElementById('btn-saber-mas');
+            const modalSaberMas = document.getElementById('modal-saber-mas');
+            const btnCerrarModal = document.getElementById('btn-cerrar-modal');
+            const btnModalOk = document.getElementById('btn-modal-ok');
+
+            const abrirModal = () => {
+                modalSaberMas.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const cerrarModal = () => {
+                modalSaberMas.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            };
+
+            btnSaberMas.addEventListener('click', abrirModal);
+            btnCerrarModal.addEventListener('click', cerrarModal);
+            btnModalOk.addEventListener('click', cerrarModal);
+
+            modalSaberMas.addEventListener('click', (e) => {
+                if (e.target === modalSaberMas) cerrarModal();
+            });
+
+            // 3. Lógica de los Acordeones de Reflexión
+            const accordionBtns = document.querySelectorAll('.accordion-btn');
+
+            accordionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+
+                    content.classList.toggle('hidden');
+                    
+                    if (!content.classList.contains('hidden')) {
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+        });
+    </script>
 
 </body>
 </html>
